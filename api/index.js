@@ -114,7 +114,7 @@ api.patch("/galleries/:title", async (req, res) => {
   let items = gallery.items;
   let update = req.body;
 
-  if (!data.title) {
+  if (!update.title) {
     res.status(400).json({ error: "Please put at least one character in the gallery name" });
     return;
   } else if (update.title.includes("?") || update.title.includes("#") || update.title.includes("/")) {
