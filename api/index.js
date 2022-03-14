@@ -63,15 +63,16 @@ api.get("/", (req, res) => {
   res.json({ db: DATABASE_NAME });
 });
 
+/*
 const fileExists = (src) => {
-
-  var http = new XMLHttpRequest();
+  let http = new XMLHttpRequest();
 
   http.open('HEAD', src, false);
   http.send();
 
   return http.status != 404;
 }
+*/
 
 /* GET /galleries: return all galleries with their data */
 api.get("/galleries", async (req, res) => {
@@ -216,7 +217,7 @@ api.post("/galleries/:title/items", async (req, res) => {
     res.status(400).json({ error: `Item "${data.title}" already exists` });
     return;
   } else if (!fileExists(data.path)) {
-    res.status(404).json({ error: `File does not exist` });
+    res.status(404).json({ error: "File does not exist" });
     return;
   }
 
