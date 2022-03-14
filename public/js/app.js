@@ -56,7 +56,7 @@ class App {
 
     let galleries = await Gallery.getAllGalleries();
     if (!galleries) {
-      document.querySelector("#galleries").textContent = "Add your first gallery!";
+      document.querySelector("#galleries").textContent = "Add a gallery!";
       return;
     }
     document.querySelector("#galleries").textContent = "";
