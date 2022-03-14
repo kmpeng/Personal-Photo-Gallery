@@ -1,0 +1,57 @@
+CS193X Final Project Proposal
+=============================
+Project Title: Image/Video gallery
+Your Name: Kaitlin Peng
+Your SUNetID: kmpeng
+
+Description
+-----------
+Since I dance, I want to be able to upload videos to an image gallery and annotate them with notes about what I want to improve on,
+so I want my project to be like the image gallery project example given, but with videos (and other things detailed below) as well. 
+
+My overall idea is an image gallery where you can photos/videos (either by uploading them or with a link), and being able to add titles 
+and descriptions to them. In addition, I want to be able to add youtube videos and spotify links to the gallery, and be able to annotate them as well.
+I also want to be able to add a notes section to the right of the images in the gallery, so I can make general notes about the gallery
+as a whole.
+
+I want each user to be able to have different galleries so they can organize photos together by event/day, so I was thinking of having
+a sidebar to the left of all the images with the names of all the galleries you have made that you can switch to. I would also have an add
+button that would let them add a new gallery.
+
+Image galleries will be able to be imported/exported, like assignment 2. If I have time, I want to be able to add "Sign in with Google" so users
+can get their image galleries saved and linked with their Google account. 
+
+Milestones
+----------
+Milestone 1 - 2/11:
+Come up with a design for the website and make a rough static prototype of it with HTML/CSS. Ask people for feedback on the design.
+
+Milestone 2 - 2/22:
+With the feedback from milestone 1, edit the design and fully code up the visual parts of the website (HTML/CSS part).  
+
+Milestone 3 - 3/2:
+Implement adding photos/videos/ and youtube/spotify links and being able to add titles to them/annotate them. 
+Also implement being able to add notes by themselves.
+
+Milestone 4 - 3/4:
+Implement being able to import/export galleries.
+
+Milestone 5 - 3/10:
+Ask users for feedback and fix any problems that come up.
+
+(?) Milestone 6:
+If I have time, add Google authentication.
+
+External libraries and code
+---------------------------
+To embed spotify links, I plan to use this code https://developer.spotify.com/documentation/widgets/generate/embed/.
+To embed youtube links, I plan to use this code https://support.google.com/youtube/answer/171780?hl=en.
+For sign in with google, I plan to use this code https://developers.google.com/identity/sign-in/web. I'm not sure about other external libraries yet.
+
+Collaboration and resources
+---------------------------
+Other than online resources like StackOverflow, probably just asking users and CAs for feedback on my design.
+
+Anything else?
+-------------
+N/A

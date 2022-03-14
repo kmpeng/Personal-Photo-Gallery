@@ -1,0 +1,175 @@
+<!-- Name: Kaitlin Pen.locals.gallery;
+     Galleries.deleteOne({ title: gallery.title });
+     Course: CS 193X
+     Instructor: Michael Chang 
+     Citation: Most of the code was inspired by assignment 2 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Image/Video/Song Gallery</title>
+
+    <!-- These two lines provide automatic page and style reloading when files change -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/lib/client/updater.js" defer></script>
+
+    <link rel="stylesheet" href="gallery.css">
+    <!-- Google Icons -->
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp">
+
+    <script type="module" src="js/app.js"></script>
+  </head>
+
+  <body>
+    <section id="sidebar">
+      <h1 id="galleryTitle">Home</h1>
+      <ul id="galleries">
+      </ul>
+
+      
+      <section>
+        <h3>Add Gallery</h3>
+        <form id="galleryForm">
+          <input type="text" name="title" id="inputTitle" placeholder="Title" required>
+          <button type="submit" id="addGallery">Add</button>
+        </form>
+      </section>
+
+      <button id="home"><span class="material-icons-outlined">home</span></button>
+    </section>
+
+    <main id="board">
+      <!-- Welcome message -->
+      <section id="message">
+        <h1>Image, Video, and Song Gallery</h1>
+        Welcome! This is an application where you can create galleries and upload images, videos, and songs to
+        them. You can also annotate the galleries and whatever you upload. <br><br>
+        <strong>Current features supported:</strong>
+        <ul>
+          <li>Creating galleries <span class="limitation">[all gallery names must be unique]</span> 
+            <details><summary>Example</summary><img class="examples" src="images/add gallery.gif"></details>
+          </li>
+          <li>Editing gallery names <span class="limitation">[names must be unique] [cannot have ?, #, or / in the name]</span>
+            <details><summary>Example</summary><img class="examples" src="images/edit gallery.gif"></details>
+          </li>
+          <li>Deleting galleries
+            <details><summary>Example</summary><img class="examples" src="images/delete gallery.gif"></details>
+          </li>
+          <li>Making notes about the gallery
+            <details><summary>Example</summary><img class="examples" src="images/edit notes.gif"></details>
+          </li>
+          <li>Uploading items to a gallery with a title and (optional) description <span class="limitation">[all item titles within a gallery must
+            be unique] [cannot have ?, #, or / in the name]</span> <br>
+            <strong>Uploadable items include:</strong>
+            <ul>
+              <li>Images/videos from your computer <span class="limitation">[supported types: .png, .jpg, .jpeg, .gif, .svg, .mp4, .webm, .ogg]</span>
+                <details><summary>Example</summary><img class="examples" src="images/upload item.gif"></details>
+              </li>
+              <li>Images/videos through a URL <span class="limitation">[same supported types as above]</span>
+                <details><summary>Example</summary><img class="examples" src="images/link item.gif"></details>
+              </li>
+              <li>YouTube videos through a URL
+                <details><summary>Example</summary><img class="examples" src="images/youtube.gif"></details>
+              </li>
+              <li>Spotify tracks/albums through a URL <span class="limitation">[playlists not supported]</span>
+                <details><summary>Example</summary><img class="examples" src="images/spotify.gif"></details>
+              </li>
+            </ul>
+          </li>
+          <li>Editing item descriptions <span class="limitation">[item titles cannot be edited]</span>
+            <details><summary>Example</summary><img class="examples" src="images/edit desc.gif"></details>
+          </li>
+          <li>Deleting items from a gallery
+            <details><summary>Example</summary><img class="examples" src="images/delete item.gif"></details>
+          </li>
+          <li>Home button (returns to this page)
+            <details><summary>Example</summary><img class="examples" src="images/home.gif"></details>
+          </li>
+        </ul>
+      </section>
+
+      <!-- gallery items -->
+      <div id="allItems">
+      </div>
+      <!-- add new item button -->
+      <button id="new"><span class="material-icons-outlined md-20">note_add</span>New</button>
+    </main>
+
+    <!-- notes section (to the right of the items board) -->
+    <section id="notes">
+      <h3>Notes</h3>
+      <textarea id="notesContent" placeholder="Write notes about the gallery here!"></textarea>
+    </section>
+
+    <!-- Modal for adding an item -->
+    <!-- Citation: https://www.w3schools.com/howto/howto_css_modals.asp -->
+    <div id="addModal" class="modal">
+      <!-- Modal content -->
+      <form id="itemForm">
+        <span class="close">&times;</span>
+        <input type="text" name="title" id="newItemTitle" placeholder="Title" required>
+        <textarea id="newItemDescription" placeholder="Description (optional)"></textarea>
+        <input type="radio" id="upload" name="addMethod" value="upload" checked>
+        <input type="file" id="itemUpload" accept="image/png,image/jpg,image/jpeg,image/gif,image/svg,video/mp4,video/webm,video/ogg"> <br>
+        <input type="radio" id="link" name="addMethod" value="link">
+        <input type="url" id="itemLink" placeholder="URL"> <br>
+        <button type="submit" id="addItem">Submit</button>
+      </form>
+    </div>
+
+    <!-- Template elements to be cloned in JavaScript -->
+    <!-- galleries in sidebar -->
+    <li class="template galleryLink"> <span>[TEMPLATE]</span>
+      <div class="editDelete">
+        <button class="edit"><span class="material-icons-outlined md-22">edit</span>
+        </button><button class="delete"><span class="material-icons-outlined md-22">delete</span></button>
+      </div>
+    </li>
+
+    <!-- gallery item: image -->
+    <article class="template galleryImage">
+      <h3 class="itemTitle">[TEMPLATE]</h3>
+      <img class="itemImage" alt="Gallery image">
+      <textarea class="itemDescription" placeholder="Write your description here"></textarea>
+      <div class="editDelete">
+        <button class="delete"><span class="material-icons-outlined md-22">delete</span></button>
+      </div>
+    </article>
+
+    <!-- gallery item: video -->
+    <article class="template galleryVideo">
+      <h3 class="itemTitle">[TEMPLATE]</h3>
+      <video class="itemVideo" alt="Gallery video" controls>Your browser does not support the video tag.</video>
+      <textarea class="itemDescription" placeholder="Write your description here"></textarea>
+      <div class="editDelete">
+        <button class="delete"><span class="material-icons-outlined md-22">delete</span></button>
+      </div>
+    </article>
+
+    <!-- gallery item: youtube url -->
+    <article class="template galleryYoutube">
+      <h3 class="itemTitle">[TEMPLATE]</h3>
+      <div class="videoContainer">
+        <iframe class="itemYoutube" title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <textarea class="itemDescription" placeholder="Write your description here"></textarea>
+      <div class="editDelete">
+        <button class="delete"><span class="material-icons-outlined md-22">delete</span></button>
+      </div>
+    </article>
+
+    <!-- gallery item: spotify url -->
+    <article class="template gallerySpotify">
+      <h3 class="itemTitle">[TEMPLATE]</h3>
+      <iframe class="itemSpotify" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      <textarea class="itemDescription" placeholder="Write your description here"></textarea>
+      <div class="editDelete">
+        <button class="delete"><span class="material-icons-outlined md-22">delete</span></button>
+      </div>
+    </article>
+  </body>
+</html>
