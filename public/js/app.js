@@ -214,7 +214,10 @@ class App {
   // Citation: code from assignment 2 import_export.js
   _onSelectFile(event) {
     let file = event.currentTarget.files[0];
-    if (!file) return;
+    if (!file) {
+      this._uploadedURL = null;
+      return;
+    }
     let reader = new FileReader();
     reader.addEventListener("error", (event) => {
       throw new Error("Error reading file");
