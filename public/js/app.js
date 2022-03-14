@@ -55,6 +55,10 @@ class App {
     document.querySelector("#galleries").textContent = "Loading...";
 
     let galleries = await Gallery.getAllGalleries();
+    if (!galleries) {
+      document.querySelector("#galleries").textContent = "Add your first gallery!";
+      return;
+    }
     document.querySelector("#galleries").textContent = "";
     for (let gallery of galleries) {
       this._displayGallerySide(gallery);
