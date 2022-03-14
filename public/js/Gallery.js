@@ -127,7 +127,10 @@ export default class Gallery {
     try {
       await apiRequest("POST", `/galleries/${this.title}/items`, data);
     } catch(e) {
-      throw new HTTPError(413, "File is too large");
+      if (!e.status) {
+        throw new HTTPError(413, "File is too large");
+      }
+      throw new HTTPError(e.status, e.message);
     }
 
     await this._reload();
