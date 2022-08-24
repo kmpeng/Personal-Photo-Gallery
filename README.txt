@@ -1,6 +1,6 @@
-Personal Photo Gallery
+#Personal Photo Gallery
 
-Overview
+##Overview
 --------
 This project was originally started as my final project in CS 193X. It is an image/video/song gallery where you can create galleries and upload images, videos and songs to them. 
 All gallery items are annotatable with a title [required, unchangeable] and description [optional, changeable], and you can also make general annotations about the gallery 
@@ -9,11 +9,11 @@ YouTube URLs, and Spotify tracks/albums through their URL. Other features of thi
 and renaming galleries.
 If you need help with the application, the home page has visual examples of all the features!
 
-Running
+##Running
 -------
 The project is being hosted on https://cs193x-finalproject.herokuapp.com/gallery.html
 
-Features
+##Features
 --------
 - Creating different galleries
 - Editing gallery names
@@ -29,7 +29,7 @@ Features
 - Home button that brings you to a welcome page that explains how the application works
 All of these features (with visual examples) are described on the home page
 
-Collaboration and libraries
+##Collaboration and libraries
 ---------------------------
 - https://www.ankursheel.com/blog/full-width-you-tube-video-embed for help with making my embeded YouTube videos take up the whole width of the containers they are in
 - https://www.w3schools.com/howto/howto_css_modals.asp for help with creating the "item creation" modal that displays when the "New" button is clicked
