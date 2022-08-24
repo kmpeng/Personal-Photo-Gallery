@@ -1,6 +1,4 @@
 # Personal Photo Gallery
-
-# Overview
 This project was originally started as my final project in CS 193X. It is an image/video/song gallery where you can create galleries and upload images, videos and songs to them. 
 All gallery items are annotatable with a title [required, unchangeable] and description [optional, changeable], and you can also make general annotations about the gallery 
 itself in the notes section to the right of the gallery. Items that can be added to the gallery include images/videos uploaded from your computer, images/videos from a URL, 
