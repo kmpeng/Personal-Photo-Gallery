@@ -23,3 +23,5 @@ The project is being hosted on https://cs193x-finalproject.herokuapp.com/gallery
 - Deleting items from a gallery
 - Home button that brings you to a welcome page that explains how the application works
 All of these features (with visual examples) are described on the home page
+### Features In Progress
+- Authentication with Google
