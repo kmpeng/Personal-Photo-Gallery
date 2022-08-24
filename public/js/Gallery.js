@@ -1,7 +1,3 @@
-/* Name: Kaitlin Peng
-   Course: CS 193X
-   Instructor: Michael Chang */
-
 import apiRequest, { HTTPError } from "./api.js";
 
 export class GalleryItem {
@@ -97,10 +93,7 @@ export default class Gallery {
       data.type = "image";
     } else if (data.path.includes("video") ||  data.path.match(/\.(mp4|webm|ogg)$/)) {
       data.type = "video";
-    } else if (/^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/.test(data.path)) {  
-      // if condition ^^ citation: https://stackoverflow.com/questions/28735459/how-to-validate-youtube-url-in-client-side-in-text-box
-      
-      // Citation: https://stackoverflow.com/questions/21607808/convert-a-youtube-video-url-to-embed-code
+    } else if (/^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/.test(data.path)) {        
       let match = data.path.match(/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/);
       if (match && match[2].length == 11) {
         data.path = "https://www.youtube.com/embed/" + match[2];  // update URL to embeded URL
@@ -109,7 +102,6 @@ export default class Gallery {
       }
       data.type = "youtube";
     } else if (/^(spotify:|https:\/\/[a-z]+\.spotify\.com\/)/.test(data.path)) {
-      // if condition ^^ and match citation: https://stackoverflow.com/a/64866894
       let match = data.path.match(/^(?:spotify:|(?:https?:\/\/(?:open|play)\.spotify\.com\/))(?:embed)?\/?(album|track)(?::|\/)((?:[0-9a-zA-Z]){22})/);
       if (match) {
         data.path = "https://open.spotify.com/embed/" + match[1] + "/" + match[2];  // update URL to embeded URL

@@ -1,7 +1,3 @@
-/* Name: Kaitlin Peng
-   Course: CS 193X
-   Instructor: Michael Chang */
-
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
@@ -27,7 +23,6 @@ const initApi = async app => {
   bucket = new GridFSBucket(db);
 };
 
-// Citation: Michael (https://edstem.org/us/courses/16698/discussion/1275204?answer=2890933)
 const saveFile = async (bucket, name, data) => {
   let existing = await bucket.find({ filename: name }).toArray();
   if (existing.length) throw new Error(`File ${name} already exists`);
@@ -40,7 +35,6 @@ const saveFile = async (bucket, name, data) => {
   return new Promise(resolve => stream.end(data, () => resolve(stream.id)));
 };
 
-// Citation: Michael (https://edstem.org/us/courses/16698/discussion/1275204?answer=2890933)
 const readFile = async (bucket, name) => {
   let stream = bucket.openDownloadStreamByName(name);
   let chunks = [];
@@ -50,7 +44,6 @@ const readFile = async (bucket, name) => {
   });
 };
 
-// Citation: Michael (https://edstem.org/us/courses/16698/discussion/1275204?answer=2890933)
 const deleteFile = async (bucket, name) => {
   let arr = await bucket.find({ filename: name }).toArray();
   for (let f of arr) await bucket.delete(f._id);

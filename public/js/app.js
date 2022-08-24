@@ -1,7 +1,3 @@
-/* Name: Kaitlin Peng
-   Course: CS 193X
-   Instructor: Michael Chang */
-
 import Gallery, { GalleryItem } from "./Gallery.js";
 
 class App {
@@ -211,7 +207,6 @@ class App {
     document.querySelector("#addModal").style.display = "block";  // show add item modal
   }
 
-  // Citation: code from assignment 2 import_export.js
   _onSelectFile(event) {
     let file = event.currentTarget.files[0];
     if (!file) {
