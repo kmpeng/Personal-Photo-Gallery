@@ -1,4 +1,4 @@
-Personal Photo Gallery
+# Personal Photo Gallery
 
 # Overview
 This project was originally started as my final project in CS 193X. It is an image/video/song gallery where you can create galleries and upload images, videos and songs to them. 
